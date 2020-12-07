@@ -49,9 +49,15 @@
 										一段代码的效果可以抽象地给出，使用期望行为的自然、高级表达式，这样更容易编写，也更不容易出错。然后，Dafny生成一个证明，证明代码与注释匹配(当然，假设它们是正确的!)Dafny将编写无bug代码的负担提升到编写无bug注释的负担。这通常比编写代码更容易，因为注释更短更直接。
 									</p>
 								</header>
-								<div class="image main"><img src="images/dafny.jpg" alt="" /></div>
-								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sapien risus, commodo eget turpis at, elementum convallis enim turpis, lorem ipsum dolor sit amet nullam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus. Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum.</p>
+								<div class="image fit"><img src="images/dafny.jpg" alt="" /></div>
+								<h3>Method规约</h3>
+								<p>method是强制执行的代码，在其他语言里左脚procedures或者function，在Dafny，function保留为另一个不同的概念。</p>
+								<p>一个method段为：
+									method Abs(x:int) returns (y:int)
+									{
+										...
+									}
+								</p>
 							</section>
 
 					</div>
