@@ -86,7 +86,10 @@
 								method Testing()<br>
 							{<br>
 								&nbsp&nbsp&nbsp&nbsp assert 2 < 3;<br>
-							}<br></p>
+							}<br>
+								局部变量表示为var x:int := 5;<br>或者var x:= 5;<br>多变量可以同时表示为：var x,y,z:bool := 1,2,true;<br>
+								Note:Dafny调用方法不在意方法内部的执行过程，只知道method的返回值，没有更多的信息。除非加方法的后置条件。
+								</p>
 								<h3>Functions</h3>
 								<h3>Loop invriants</h3>
 								<h3>Termination</h3>
