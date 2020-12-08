@@ -56,7 +56,7 @@
 								一个method段为：<br>
 									method Abs(x:int) returns (y:int)<br>
 									{<br>
-										&#9;...<br>
+										&nbsp&nbsp&nbsp&nbsp...<br>
 									}<br>
 								方法名为Abs，带有一个整型的参数x,返回一个整型y。参数后须跟:和类型。同时可以声明多个参数和多个返回类型。<br>
 								method的主体是由花括号围起来的代码段。主体包括一系列的陈述句，如强制赋值，if语句，循环和其他method的调用，返回语句等。<br>
@@ -66,7 +66,7 @@
 								<p>Dafny的强大之处是能够通过注解方法指定行为。如Abs方法的不论什么输入，其结果总是大于等于0。有了这个注解，Dafny可以证明我们声称方法的属性为真，Dafny有许多种方式给出注解，但最常用的最基础的就是方法Pre-和postconditions。<br>
 									Postconditions，由ensures关键字给出，在返回值后，方法体前，作为method声明的一部分。ensures关键字后跟随一个布尔表达式。如：<br>
 									method Abs(x:int) returns (y:int)<br>
-									&#9;ensures 0<=y <br>
+									&nbsp&nbsp&nbsp&nbsp ensures 0<=y <br>
 										{<br>
 											&#9;...<br>
 										}<br>
