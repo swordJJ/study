@@ -68,21 +68,25 @@
 									method Abs(x:int) returns (y:int)<br>
 									&nbsp&nbsp&nbsp&nbsp ensures 0<=y <br>
 										{<br>
-											&#9;...<br>
+											&nbsp&nbsp&nbsp&nbsp...<br>
 										}<br>
 									通常来说，Dafny验证错误有两大原因，规约与代码不一致或者不够clever来证明所需属性成立。
 									Preconditions与postcondition类似，在方法调用前必须为真。当编写方法的时候，你假设了前置条件，就必须设置后置条件。方法的调用就会假设当方法返回时，后置条件成立。<br>
 									requires是precondtion的关键字。<br>
 									method MultipleReturns(x:int,y:int) returns (more:int,less:int)<br>
-									&#9;requires 0 < y<br>
-									&#9;ensures less < x < more<br>
+									&nbsp&nbsp&nbsp&nbsprequires 0 < y<br>
+									&nbsp&nbsp&nbsp&nbspensures less < x < more<br>
 									{<br>
-										&#9;more := x + y ;<br>
-										&#9;less := x - y ;<br>
+										&nbsp&nbsp&nbsp&nbspmore := x + y ;<br>
+										&nbsp&nbsp&nbsp&nbspless := x - y ;<br>
 									}<br>
 								</p>
 								<h3>Assertions</h3>
-								<p>assert可以放在method的任意的中部，</p>
+								<p>assert可以放在method的任意的位置，以关键字assert，跟随一个布尔表达式和分号终结。assert意味着当控制到达代码执行部位时，表达式总是成立。<br>
+								method Testing()<br>
+							{<br>
+								&nbsp&nbsp&nbsp&nbsp assert 2 < 3;<br>
+							}<br></p>
 								<h3>Functions</h3>
 								<h3>Loop invriants</h3>
 								<h3>Termination</h3>
