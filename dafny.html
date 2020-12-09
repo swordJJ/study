@@ -118,8 +118,8 @@
 								<p>Dafny通过使用decreases注解证明代码终止。Dafny证明终止在两个地方:loops 和 递归。这两者要不需要一个显示的注解，要不由Dafny提供正确的猜测。<br>
 								decreases注解表示每次循环或者递归调用完之后表达式下降。Dafny需要验证的两个条件：表达式确实变小了以及是有边界的。<br>
 								while 0 < i <br>
-								&nbsp&nbsp&nbsp&nbsp invariant 0 <= i 
-								&nbsp&nbsp&nbsp&nbsp decreases i 
+								&nbsp&nbsp&nbsp&nbsp invariant 0 <= i <br>
+								&nbsp&nbsp&nbsp&nbsp decreases i <br>
 								{<br>
 									&nbsp&nbsp&nbsp&nbsp i:=i-1;<br>
 								}<br>
@@ -131,8 +131,15 @@
 								<p>quantifiers通常以forall表达式的形式出现，也叫做全称量词。bound variablt:对集合的元素引入了temporary name，也叫做边界变量，如下面的k：<br>
 								assert forall k :: 0 <= k <a.Length ==> ...a[k]...</p>
 								边界变量是由类型的，通常是int类型。一对::分离边界变量和可选类型到全称属性。
-								<h3>Predicates</h3>
+								<h3>Predicates</h3>predicate是一个返回boolean类型的function，它简单但是在Dafny程序中具有很重要的角色。如我们对整型类型的数组，定义一个sorted predicate，当且仅当数组是有序的并且以递增的顺序，则返回true。使用predicates会让我们的代码更短，不需要一遍一遍重续属性。可读性增强了。
+								<br>
+								predicate sorted(a:array<int>)<br>
+									&nbsp&nbsp&nbsp&nbsp  requires a!=null<br>
+									{<br>
+										forall j,k :: 0<= j < k < a.Length ==> a[j]<=a[k]<br>
+									}<br>
 								<h3>Framing</h3>
+								
 								<p></p>
 							</section>
 
