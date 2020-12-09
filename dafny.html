@@ -91,6 +91,11 @@
 								Note:Dafny调用方法不在意方法内部的执行过程，只知道method的返回值，没有更多的信息。除非加方法的后置条件。
 								</p>
 								<h3>Functions</h3>
+								<p>function abs(x:int):int<br>
+								{
+									&nbsp&nbsp&nbsp&nbsp if x < 0 then -x else x<br>
+								}<br>
+								上面声明了一个叫做abs，带有一位int参数，返回值为int的函数。function body部分必须只包含一个表达式。</p>
 								<h3>Loop invriants</h3>
 								<h3>Termination</h3>
 								<h3>Arrays</h3>
