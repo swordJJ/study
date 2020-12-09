@@ -139,7 +139,12 @@
 										forall j,k :: 0<= j < k < a.Length ==> a[j]<=a[k]<br>
 									}<br>
 								<h3>Framing</h3>
-								
+								sorted predicate无法访问数组，因为数组没有包括在函数的reading frame中。函数或者predicate的reading frame是所有内存的分配地址，函数允许读。
+								predicate sorted(a:array<int>)<br>
+									...<br>
+									reads a<br>
+									...<br>
+								reads注解与其他注解不同，不是一个布尔表达式，可以出现在pre-和postcondition之后。modifies注解允许对内存部分进行修改。
 								<p></p>
 							</section>
 
