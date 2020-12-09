@@ -110,11 +110,20 @@
 							&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp invariant 0 <= i <br>
 							&nbsp&nbsp&nbsp&nbsp{<br>
 								&nbsp&nbsp&nbsp&nbsp i:= i+1;<br>
-							}<br>
+								&nbsp&nbsp&nbsp&nbsp}<br>
 						}<br>
 						当指定了不变时，Dafny证明两件事情，即不变式在进入循环前成立，并且由循环保留。
 							</p>
 								<h3>Termination</h3>
+								<p>Dafny通过使用decreases注解证明代码终止。Dafny证明终止在两个地方:loops 和 递归。这两者要不需要一个显示的注解，要不由Dafny提供正确的猜测。<br>
+								decreases注解表示每次循环或者递归调用完之后表达式下降。Dafny需要验证的两个条件：表达式确实变小了以及是有边界的。<br>
+								while 0 < i <br>
+								&nbsp&nbsp&nbsp&nbsp invariant 0 <= i 
+								&nbsp&nbsp&nbsp&nbsp decreases i 
+								{<br>
+									&nbsp&nbsp&nbsp&nbsp i:=i-1;<br>
+								}<br>
+							</p>
 								<h3>Arrays</h3>
 								<h3>Quantifiers</h3>
 								<h3>Predicates</h3>
