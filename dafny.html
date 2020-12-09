@@ -101,6 +101,19 @@
 								Note:nat表示为自然数类型（无负整数)。
 							</p>
 								<h3>Loop invriants</h3>
+								<p>Dafny的while loop有一个问题，即Dafny没有办法提前知道代码会执行多少次循环。但是Dafny需要考虑一个程序的所有路径，包括进入多少次循环。因此需要提供loop invariant注解。<br>
+								loop invariant是一个进入循环、执行完每次循环体之后成立的表达式。如 i>=0 是下面循环的不变式:<br>
+							method m(n:nat)<br>
+						{<br>
+							&nbsp&nbsp&nbsp&nbsp var i:=0;<br>
+							&nbsp&nbsp&nbsp&nbsp while i < n 
+							&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp invariant 0 <= i <br>
+							&nbsp&nbsp&nbsp&nbsp{<br>
+								&nbsp&nbsp&nbsp&nbsp i:= i+1;<br>
+							}<br>
+						}<br>
+						当指定了不变时，Dafny证明两件事情，即不变式在进入循环前成立，并且由循环保留。
+							</p>
 								<h3>Termination</h3>
 								<h3>Arrays</h3>
 								<h3>Quantifiers</h3>
