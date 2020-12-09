@@ -145,6 +145,7 @@
 									reads a<br>
 									...<br>
 								reads注解与其他注解不同，不是一个布尔表达式，可以出现在pre-和postcondition之后。modifies注解允许对内存部分进行修改。
+								Note:Framing只出现在heap或者内存上。局部便利不能存储在堆上，因此他们不能再reads中提及，set、sequences和multiset的类型为值，可以视为整数或者局部变量。数组和对象是引用类型，他们存储在堆上。
 								<p></p>
 							</section>
 
