@@ -95,7 +95,11 @@
 								{
 									&nbsp&nbsp&nbsp&nbsp if x < 0 then -x else x<br>
 								}<br>
-								上面声明了一个叫做abs，带有一位int参数，返回值为int的函数。function body部分必须只包含一个表达式。</p>
+								上面声明了一个叫做abs，带有一位int参数，返回值为int的函数。function body部分必须只包含一个表达式。function的优势在于可以直接在specifications中使用。如：<br>
+								assert abs(3) == 3;<br>
+								function不能作为最后的变异程序，它只是一个帮助我们验证代码的工具。function method可以在真实代码中调用。<br>
+								Note:nat表示为自然数类型（无负整数)。
+							</p>
 								<h3>Loop invriants</h3>
 								<h3>Termination</h3>
 								<h3>Arrays</h3>
