@@ -125,7 +125,12 @@
 								}<br>
 							</p>
 								<h3>Arrays</h3>
+								<p>Arrays是Dafny内置部分，如array<T>，其中T是另一种类型。 数组可以是null，已经有内置的长度域，a.Length。数组元素的访问从0开始，如a[0],a[1]等。边界检查是在验证时间中证明，no runtime checks。<br>
+								</p>
 								<h3>Quantifiers</h3>
+								<p>quantifiers通常以forall表达式的形式出现，也叫做全称量词。bound variablt:对集合的元素引入了temporary name，也叫做边界变量，如下面的k：<br>
+								assert forall k :: 0 <= k <a.Length ==> ...a[k]...</p>
+								边界变量是由类型的，通常是int类型。一对::分离边界变量和可选类型到全称属性。
 								<h3>Predicates</h3>
 								<h3>Framing</h3>
 								<p></p>
