@@ -153,6 +153,18 @@
 									<h1>Dafny 学习编码记录2</h1>
 								</header>
 								<h3>Termination</h3>
+								Dafny证明所有程序的终止。非终结即（发散）行为有两个源头：循环、递归函数和方法。Dafny使用一个技术来解决任一情况：decreases annotations。
+
+								decreaseas注解指定一个值叫做termination measure，在每次遍历循环或者递归函数方法的调用，严格变小。这个值是有边界的不能永远变小。如果值开始在任一无限值上，循环或者递归必须停止。为了证明这个，Dafny证明termination measure在每次迭代中变小。如果Dafny不能证明，就说错误发生在下降termination measure。因为每个termination measure都有一个内置的下边界。如：
+								<br>while i < n <br>
+								&nbsp&nbsp&nbsp&nbsp invariant 0 <= i <= n <br>
+								{<br>
+									i := i + 1 ;<br>
+								}<br>
+								给定循环形式，Dafny有特殊的规则来猜termination measure。看到循环条件有A < B 的比较形式，则猜测 decreases B - A <br>
+								在上述例子中则是，decreases n - i <br>
+									
+											
 							</section>
 					</div>
 			</div>
