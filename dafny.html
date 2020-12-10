@@ -163,8 +163,25 @@
 								}<br>
 								给定循环形式，Dafny有特殊的规则来猜termination measure。看到循环条件有A < B 的比较形式，则猜测 decreases B - A <br>
 								在上述例子中则是，decreases n - i <br>
-									
-											
+								下面给出几个decreases例子：
+								function Ack(m: nat, n: nat): nat<br>
+								decreases m, n<br>
+							 {<br>
+								&nbsp&nbsp&nbsp&nbsp if m == 0 then n + 1<br>
+								&nbsp&nbsp&nbsp&nbsp else if n == 0 then Ack(m - 1, 1)<br>
+								&nbsp&nbsp&nbsp&nbsp else Ack(m - 1, Ack(m, n - 1))<br>
+							 }<br>
+							Termination 不仅应用在单个functions/methods上，也可以在多个相互递归functions/methods上。如：<br>
+							predicate even(n: nat)<br>
+							&nbsp&nbsp&nbsp&nbsp ensures even(n) <==> n % 2 == 0<br>
+								{<br>
+									&nbsp&nbsp&nbsp&nbsp if n == 0 then true else odd(n-1)<br>
+								}<br>
+								predicate odd(n: nat)<br>
+								&nbsp&nbsp&nbsp&nbsp ensures odd(n) <==> n % 2 != 0<br>
+								{<br>
+									&nbsp&nbsp&nbsp&nbsp if n == 0 then false else even(n-1)<br>
+								}	<br>
 							</section>
 					</div>
 			</div>
