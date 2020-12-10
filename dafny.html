@@ -163,6 +163,18 @@
 								}<br>
 								给定循环形式，Dafny有特殊的规则来猜termination measure。看到循环条件有A < B 的比较形式，则猜测 decreases B - A <br>
 								在上述例子中则是，decreases n - i <br>
+								对于循环可能不会终止或者终止的证明是未知的，有:<br>
+								method hail(N: nat)<br>
+								&nbsp&nbsp&nbsp&nbsp decreases *<br>
+								{<br>
+									&nbsp&nbsp&nbsp&nbsp var n := N;<br>
+									&nbsp&nbsp&nbsp&nbsp while 1 < n<br>
+									&nbsp&nbsp&nbsp&nbsp decreases *<br>
+									&nbsp&nbsp&nbsp&nbsp { <br>
+										&nbsp&nbsp&nbsp&nbsp n := if n % 2 == 0 then n / 2 else n * 3 + 1;<br>
+										&nbsp&nbsp&nbsp&nbsp }<br>
+								}<br>
+								其中，Dafny提供了“out“，特殊的注解，dafny不会试图去证明终止。以decreases * 标记。<br>
 								下面给出几个decreases例子：
 								function Ack(m: nat, n: nat): nat<br>
 								decreases m, n<br>
