@@ -344,6 +344,13 @@
 								index := -1;<br>
 								这段代码计算出正确的结果，但是Dafny抱怨第二个循环不变式不成立，Dafny不信任所有哪些跳过的元素是合理的。理由是前置条件说每个连续的元素最多减少一，但是并没有说更远的元素是如何关联的。为了说服这个fact，我们需要使用一个引理。<br>
 								<h3>Lemmas</h3>
+								一个lemma其实是一个ghost method。lemma的后置条件表示想要的属性。lemma不允许改变状态。因为lemma是ghost的，不能再运行时间被调用，所以在产生可执行代码前编译器会擦除它。因此，引理的存在仅仅是为了它对程序验证的影响。可以将引理看为重量级的assertions。一个lemma如下：<br>
+								lemma Lemma(...)<br>
+								ensures (desirable property)<br>
+								{<br>
+								...<br>
+								}<br>
+
 							</secition><br>
 					</div>
 			</div>
