@@ -350,7 +350,16 @@
 								{<br>
 								...<br>
 								}<br>
-
+								对于零搜索问题，想要的属性是索引在index到index+a[index]之间的元素不能为0.我们取数组和开始索引作为参数。如下:<br>
+								lemma SkippingLemma(a : array<int>, j : int)<br>
+									&nbsp&nbsp&nbsp&nbsp requires a != null<br>
+									&nbsp&nbsp&nbsp&nbsp requires forall i :: 0 <= i < a.Length ==> 0 <= a[i]<br>
+									&nbsp&nbsp&nbsp&nbsp requires forall i :: 0 < i < a.Length ==> a[i-1]-1 <= a[i]<br>
+									&nbsp&nbsp&nbsp&nbsp requires 0 <= j < a.Length<br>
+									&nbsp&nbsp&nbsp&nbsp ensures forall i :: j <= i < j + a[j] && i < a.Length ==> a[i] != 0<br>
+								 {<br>
+									&nbsp&nbsp&nbsp&nbsp ...<br>
+								 }<br>
 							</secition><br>
 					</div>
 			</div>
