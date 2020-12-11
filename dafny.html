@@ -287,8 +287,17 @@
 								assert (multiset{1,1,1} - multiset{1,1}) == multiset{1};<br>
 								Multiset的分离：如果两个多重集没有公共的成员则为真。当且仅当每个元素的计数相等，则两个多重集相等。<br>
 								<h3>Maps</h3>
-								
-
+								Dafny中的Maps表示组合数组。它有两个类型：key和type。值可以根据key提取或者查找。map写成如下:<br>
+								map<U,V><br>
+								U是key，V是值。可以根据给定的key访问值m[key]。<br>
+								每个map都有个域，即所有的key都有一个值。如果m是一个map，那么m[i:=j]是一个新的map，加了i，j到map的域中。<br>
+								Like sets, maps have a map comprehension. The syntax is almost the same as for sets:<br>
+								map i: T | p(i) :: f(i)<br>
+								其中，i是key，有f(i)映射，p(i)用来决定新map的domain。<br>
+								map i | 0 <= i < 10 :: 2*i<br>
+								表示从0到9，value是它的两倍。<br>
+								map i | i in m && i != 3 :: m[i]<br>
+								表示从int到int的map m中移除key=3.
 							</secition>
 					</div>
 			</div>
