@@ -226,7 +226,29 @@
 								assert (set x | x in {0,1,2} :: x * 1) == {0,1,2}; <br>
 								assert (set x | x in {0,1,2,3,4,5} && x < 3) == {0,1,2};<br>
 								assert (set x | x in {0,1,2} :: x + 1) == {1,2,3};<br>
-
+							</secition>
+							<section class="post">
+								<header class="major">
+									<span class="date">Decemeber 11, 2020</span>
+									<h1>Dafny 学习编码记录4</h1>
+								</header>
+								<h3>Sequences</h3>
+								Sequences是Dafny内置的类型，用来表示有序的列表。他们可以用来表示许多有序的集合，包括lists，queues和stacks等。Sequences和Set一样是不可变值类型：他们一旦创建不可以被修改。在这个角度，他们与Java和Python中的字符是很相似的，出了他们可以是任一类型的序列。Sequence类型可以如下表示：<br>
+								seq<int><br>
+								下面函数以序列作为参数：<br>
+								predicate sorted(s: seq<int>) <br>
+									{<br>
+										&nbsp&nbsp&nbsp&nbsp  forall i,j :: 0 <= i < j < |s| ==> s[i] <= s[j]<br>
+									}<br>
+								序列的长度写作|s|，通过方括号描述访问序列的元素。函数不需要reads子句访问序列。因为序列不在堆上存储。他们只是值。序列最强大的地方在于注解、函数可以创建并操作它。如下：<br>
+								predicate sorted2(s: seq<int>)<br>
+									{<br>
+									   0 < |s| ==> (forall i :: 0 < i < |s| ==> s[0] <= s[i]) &&<br>
+												   sorted2(s[1..])<br>
+									}<br>
+								s[1..]是序列的切片，表示从第一个元素开始，直到最后。切片的注解是s[i..j]。最后序列有j-i个元素，从元素s[j]开始。元素s[j]不包含在切片中。<br>
+								
+							</secition>
 					</div>
 			</div>
 
