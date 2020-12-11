@@ -206,7 +206,23 @@
 									var s2 := {1, 2, 3}; // set contains exactly 1, 2, and 3 <br> 
 									assert s2 == {1,1,2,3,3,3,3}; // same as before <br> 
 									var s3, s4 := {1,2}, {1,4};	<br>
-							</section>
+								其他的普通的集合操作：<br>
+								assert s2 + s4 == {1,2,3,4}; // set union <br> 
+								assert s2 * s3 == {1,2} && s2 * s4 == {1}; // set intersection <br> 
+								assert s2 - s3 == {3}; // set difference <br> 
+								因为集合只能仅包含最多一份每个元素，union不能多次计算重复的元素。两个有限集合操作数构成一个有限集合。集合的操作符永远有定义。<br>
+								assert {1} <= {1, 2} && {1, 2} <= {1, 2}; // subset <br> 
+								assert {} < {1, 2} && !({1} < {1}); // strict, or proper, subset <br> 
+								assert !({1, 2} <= {1, 4}) && !({1, 4} <= {1, 4}); // no relation <br> 
+								assert {1, 2} == {1, 2} && {1, 3} != {1, 2}; // equality and non-equality <br> 
+								集合可以用in和！in测试元素在不在集合中。<br>
+								assert 5 in {1,3,4,5};<br> 
+								assert 1 in {1,3,4,5};<br> 
+								assert 2 !in {1,3,4,5};<br> 
+								assert forall x :: x !in {};<br> 
+								集合可以使用reads和modifies条例。当使用decreases子句是，集合由子集有序表示。借助集合的理解来创建集合。通过包含f(x)来为所有类型为T的x满足p(x)：
+								<br>   set x: T | p(x) :: f(x)
+
 					</div>
 			</div>
 
