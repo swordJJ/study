@@ -279,7 +279,16 @@
 								</div>
 								值类型表示一些不依赖于堆状态的信息。这些值有一个数学本能：一旦被创建不能被修改。这些特性在规约中就显得很有用。Sets、Sequences与上相同。
 								<h3>Multisets</h3>
+								Multisets很多地方与sets相同，但是它能跟踪有多少个元素的副本。这让他在存储一个数组的元素集合中极为有用。比如每个元素的副本的数量都相同。multiset的类型与sets相同:<br>
+								multiset<int><br>
+								Note:multiset({3,3})不是两个3的多重集。括号必须与关键词连接。<br>
+								与sets相同，multisets是无序的。<br>
+								sets上的操作对multisets也可用。可以用in来测试元素是否在multiset中(in表示最少有一个成员的值)。Multiset的并意味这从两者中取元素，并且将他们拼接起来。multiset的difference也类似工作:<br>
+								assert (multiset{1,1,1} - multiset{1,1}) == multiset{1};<br>
+								Multiset的分离：如果两个多重集没有公共的成员则为真。当且仅当每个元素的计数相等，则两个多重集相等。<br>
+								<h3>Maps</h3>
 								
+
 							</secition>
 					</div>
 			</div>
