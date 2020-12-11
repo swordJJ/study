@@ -360,7 +360,18 @@
 								 {<br>
 									&nbsp&nbsp&nbsp&nbsp ...<br>
 								 }<br>
-							</secition><br>
+								 后置条件即我们想要的属性。对i的限制是因为j+a[j]是数组的末端。我们只想讨论这个范围内的下标，也就是数组的下标。然后我们做一个关键的步骤:检查我们的引理是否足以证明循环不变量。通过在填入引理主体之前进行这种检查，我们可以确保我们试图证明的是正确的事情。FindZero方法变成:<br>
+								 index := 0;<br>
+								 while index < a.Length<br>
+								 &nbsp&nbsp&nbsp&nbsp invariant 0 <= index<br>
+								 &nbsp&nbsp&nbsp&nbsp invariant forall k :: 0 <= k < index && k < a.Length ==> a[k] != 0<br>
+								 {<br>
+									&nbsp&nbsp&nbsp&nbsp if a[index] == 0 { return; }<br>
+									&nbsp&nbsp&nbsp&nbsp SkippingLemma(a, index);<br>
+									&nbsp&nbsp&nbsp&nbsp index := index + a[index];<br>
+								 }<br>
+								 index := -1;<br>
+							</secition>
 					</div>
 			</div>
 
