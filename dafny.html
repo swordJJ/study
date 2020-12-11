@@ -259,7 +259,7 @@
 								assert [1,2,3] == [1] + [2,3];<br>
 								assert s == s + [];<br>
 								assert forall i :: 0 <= i <= |s| ==> s == s[..i] + s[i..];<br>
-								序列也支持in和！in操作，测试包含：
+								序列也支持in和！in操作，测试包含：<br>
 								assert 5 in s; // using s from before<br>
 								assert 0 !in s;<br>
 							</secition>
@@ -277,6 +277,9 @@
 										<li>Maps</li>
 									</ol>
 								</div>
+								值类型表示一些不依赖于堆状态的信息。这些值有一个数学本能：一旦被创建不能被修改。这些特性在规约中就显得很有用。Sets、Sequences与上相同。
+								<h3>Multisets</h3>
+								
 							</secition>
 					</div>
 			</div>
