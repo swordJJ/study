@@ -255,7 +255,21 @@
 								assert s[1..] == [2, 3, 4, 5]; // everything but the first<br>
 								assert s[..|s|-1] == [1, 2, 3, 4]; // everything but the last<br>
 								assert s == s[0..] == s[..|s|] == s[0..|s|] == s[..]; // the whole sequence<br>
-
+								序列也可以通过符号+来进行连接。
+								assert [1,2,3] == [1] + [2,3];<br>
+								assert s == s + [];<br>
+								assert forall i :: 0 <= i <= |s| ==> s == s[..i] + s[i..];<br>
+								序列也支持in和！in操作，测试包含：
+								assert 5 in s; // using s from before<br>
+								assert 0 !in s;<br>
+							</secition>
+							<section class="post">
+								<header class="major">
+									<span class="date">Decemeber 11, 2020</span>
+									<h1>Dafny 学习编码记录5</h1>
+								</header>
+								<h3>Collection Types</h3>
+								 
 							</secition>
 					</div>
 			</div>
