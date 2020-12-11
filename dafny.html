@@ -327,7 +327,22 @@
 								证明程序正确有时需要逻辑步骤，但是对于Dafny来说发现这些逻辑过于复杂。这种情况，我们通常提供lemma来给Dafny援助。<br>
 								Lemmas是用来证明其他结果的定理，而不是成为一个目标。他们允许Dafny将证明分成：证明lemma，然后用来证明最后的结果；最后的结果成为程序的正确性。Dafny和计算机擅长处理特定的细节和覆盖所有的案例，但是看不到中间过程来是证明过程变得简单。
 								
-							</secition>
+								通过写和使用lemmas，你可以指出这些步骤是什么以及什么时候在程序中使用它。他们对归纳参数很重要，也是定理证明器中最难的问题之一。
+								<h3>Searching for Zero</h3>
+								首先看一个从数组中找0的例子。这个例子有趣的地方在于我们搜索的数组有两个特别的属性，所有元素是肺腑的，每个连续的元素递减最多为1。代码如下：<br>
+								requires forall i :: 0 <= i < a.Length ==> 0 <= a[i]<br>
+								requires forall i :: 0 < i < a.Length ==> a[i-1]-1 <= a[i]<br>
+								有了这些前提，我们的搜索路径可以做一些聪明的事：跳过元素。设想我们遍历一个数组，看到a[j] == 7 那么 6 <= a[j+1], 5 <= a[j+2]等。实际上下一个0不可能超出7个元素。所以我们甚至不需要搜索知道a[j+a[j]]。<br>
+								index := 0;<br>
+								while index < a.Length<br>
+								   invariant 0 <= index<br>
+								   invariant forall k :: 0 <= k < index && k < a.Length ==> a[k] != 0<br>
+								{<br>
+								   if a[index] == 0 { return; }<br>
+								   index := index + a[index];<br>
+								}<br>
+								index := -1;<br>
+							</secition><br>
 					</div>
 			</div>
 
