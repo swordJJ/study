@@ -247,7 +247,15 @@
 												   sorted2(s[1..])<br>
 									}<br>
 								s[1..]是序列的切片，表示从第一个元素开始，直到最后。切片的注解是s[i..j]。最后序列有j-i个元素，从元素s[j]开始。元素s[j]不包含在切片中。<br>
-								
+								序列可以由元素构造:<br>
+								var s := [1, 2, 3];<br>
+								var s := [1, 2, 3, 4, 5];<br>
+								assert s[|s|-1] == 5; //access the last element<br>
+								assert s[|s|-1..|s|] == [5]; //slice just the last element, as a singleton<br>
+								assert s[1..] == [2, 3, 4, 5]; // everything but the first<br>
+								assert s[..|s|-1] == [1, 2, 3, 4]; // everything but the last<br>
+								assert s == s[0..] == s[..|s|] == s[0..|s|] == s[..]; // the whole sequence<br>
+
 							</secition>
 					</div>
 			</div>
