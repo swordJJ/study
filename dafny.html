@@ -371,6 +371,14 @@
 									&nbsp&nbsp&nbsp&nbsp index := index + a[index];<br>
 								 }<br>
 								 index := -1;<br>
+								 此时，Dafny对FindZero没有任何抱怨。lemma的后置条件表明 循环不变式的成立。但是它抱怨lemma本身，因为lemma的主体是空的。为了让Dafny接受lemma，我们必须证明后置条件为真。<br>
+								 var i := j;<br>
+								 while i < j + a[j] && i < a.Length<br>
+								 &nbsp&nbsp&nbsp&nbsp invariant i < a.Length ==> a[j] - (i-j) <= a[i]<br>
+								 &nbsp&nbsp&nbsp&nbsp invariant forall k :: j <= k < i && k < a.Length ==> a[k] != 0<br>
+								 {<br>
+									&nbsp&nbsp&nbsp&nbsp i := i + 1;<br>
+								 }<br>
 							</secition>
 					</div>
 			</div>
