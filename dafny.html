@@ -379,7 +379,33 @@
 								 {<br>
 									&nbsp&nbsp&nbsp&nbsp i := i + 1;<br>
 								 }<br>
-								 其中第一个不变式是如果没有运行到数组的最后，对当前元素做了约束。对于超过j的索引，数组只能小一位，所以这个值从a[j]中提取。
+								 其中第一个不变式是如果没有运行到数组的最后，对当前元素做了约束。对于超过j的索引，数组只能小一位，所以这个值从a[j]中提取。这只能说当前元素不为0。如果没有第二个不变式，Dafny无法知道这里没有0.Dafny忘记了所有关于循环执行的事情，除了invaraints用的东西，所以我们需要建立一个事实，那就是到目前为止任何地方都没有零。<br>
+								 <h3>Counting</h3>
+								 计算bool序列中true的数量。如：<br>
+								 function count(a: seq<bool>): nat<br>
+									{<br>
+										&nbsp&nbsp&nbsp&nbsp if |a| == 0 then 0 else<br>
+									   (&nbsp&nbsp&nbsp&nbspif a[0] then 1 else 0) + count(a[1..])<br>
+									}<br>
+									method m()<br>
+									{<br>
+										&nbsp&nbsp&nbsp&nbsp assert count([]) == 0;<br>
+										&nbsp&nbsp&nbsp&nbsp assert count([true]) == 1;<br>
+										&nbsp&nbsp&nbsp&nbsp assert count([false]) == 0;<br>
+										&nbsp&nbsp&nbsp&nbsp assert count([true, true]) == 2;<br>
+									}<br>
+								上述代码直截了当，但是函数的定义是递归的。递归函数倾向于需要lemmas。我们想要证明：forall a,b :: count(a+b) == count(a) + count(b)<br>
+								其中第一个+是序列的连结，第二个+是整数的加法。<br>
+								lemma DistributiveLemma(a: seq<bool>, b: seq<bool>)<br>
+									ensures count(a + b) == count(a) + count(b)<br>
+								 {<br>
+								 }<br>
+								 function count(a: seq<bool>): nat<br>
+								 {<br>
+									if |a| == 0 then 0 else<br>
+									(if a[0] then 1 else 0) + count(a[1..])<br>
+								 }<br>
+								 
 							</secition>
 					</div>
 			</div>
