@@ -426,7 +426,19 @@
 								assert count(a + b) == count(a) + count(b); // postcondition<br>
 								assert count(a + b) == count([a[0]]) + count(a[1..]) + count(b);<br>
 								<h3>Induction</h3>
-							 
+								lemma DistributiveLemma(a: seq<bool>, b: seq<bool>)<br>
+									ensures count(a + b) == count(a) + count(b)<br>
+								 {<br>
+									if a == []<br>
+									{<br>
+									   assert a + b == b;<br>
+									}<br>
+									else<br>
+									{<br>
+									   DistributiveLemma(a[1..], b);<br>
+									   assert a + b == [a[0]] + (a[1..] + b);<br>
+									}<br>
+								 }<br>
 							</secition>
 					</div>
 			</div>
