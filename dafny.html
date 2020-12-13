@@ -410,14 +410,14 @@
 								 在写lemma之前，我们先搞清楚证明它的策略。发现Dafny不能证明的原因是count函数是从序列的首部开始定义的，而分布式属性在序列的中部进行操作。如果我们找到从序列头开始工作，那么Dafny可以直接使用这个函数。如果a==[]，那么不管b是什么，a+b==b。Lemma通过isf statements来解决案例。<br>
 								 if a == []<br>
 								{<br>
-								assert a + b == b;<br>
-								assert count(a) == 0;<br>
-								assert count(a + b) == count(b);<br>
-								assert count(a + b) == count(a) + count(b);<br>
+									&nbsp&nbsp&nbsp&nbsp assert a + b == b;<br>
+									&nbsp&nbsp&nbsp&nbsp assert count(a) == 0;<br>
+									&nbsp&nbsp&nbsp&nbsp assert count(a + b) == count(b);<br>
+									&nbsp&nbsp&nbsp&nbsp assert count(a + b) == count(a) + count(b);<br>
 								}<br>
 								else<br>
 								{<br>
-								...<br>
+									&nbsp&nbsp&nbsp&nbsp ...<br>
 								}<br>
 								即如果a==[]，那么lemma直接证明了后置条件。当0<|a|时，如何将count(a+b) 与count(a) 和count(b)相连。我们通过下面的小技巧来扩展count（a+b）:<br>
 								assert a + b == [a[0]] + (a[1..] + b);<br>
@@ -433,15 +433,15 @@
 								lemma DistributiveLemma(a: seq<bool>, b: seq<bool>)<br>
 									ensures count(a + b) == count(a) + count(b)<br>
 								 {<br>
-									if a == []<br>
-									{<br>
-									   assert a + b == b;<br>
-									}<br>
-									else<br>
-									{<br>
-									   DistributiveLemma(a[1..], b);<br>
-									   assert a + b == [a[0]] + (a[1..] + b);<br>
-									}<br>
+									&nbsp&nbsp&nbsp&nbspif a == []<br>
+									&nbsp&nbsp&nbsp&nbsp {<br>
+										&nbsp&nbsp&nbsp&nbsp  assert a + b == b;<br>
+										&nbsp&nbsp&nbsp&nbsp }<br>
+										&nbsp&nbsp&nbsp&nbsp else<br>
+										&nbsp&nbsp&nbsp&nbsp {<br>
+											&nbsp&nbsp&nbsp&nbsp   DistributiveLemma(a[1..], b);<br>
+											&nbsp&nbsp&nbsp&nbsp  assert a + b == [a[0]] + (a[1..] + b);<br>
+											&nbsp&nbsp&nbsp&nbsp }<br>
 								 }<br>
 							</secition>
 					</div>
