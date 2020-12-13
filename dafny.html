@@ -461,7 +461,7 @@
 								 我们将路径表示为一个非空节点序列，其中每个节点都由路径中的前一个节点链接。我们定义了两个谓词，一个定义有效路径，另一个确定给定的路径是否为图中两个特定节点之间的有效路径:<br>
 								 predicate pathSpecific(p: seq<Node>, start: Node, end: Node, graph: set<Node>)<br>
 									requires closed(graph)<br>
-									reads graph<br>
+									reads graph<br> 
 								 {<br>
 									0 < |p| && // path is nonempty<br>
 									start == p[0] && end == p[|p|-1] && // it starts and ends correctly<br>
@@ -476,7 +476,7 @@
 									   path(p[1..], graph)) // and the rest of the sequence is a valid<br>
 								 }<br>
 								 现在我们准备陈述我们要证明的引理。我们考虑图和子图:也构成图的图的节点的子集。这个子图必须是封闭的，即不包含它自身之外的链接。如果出现这种情况，那么从子图中的节点到子图外的节点就不存在有效路径。我们将这个事实称为闭引理，我们在Dafny中陈述如下:<br>
-								 
+
 							</secition>
 					</div>
 			</div>
