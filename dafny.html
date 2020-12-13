@@ -443,6 +443,40 @@
 											&nbsp&nbsp&nbsp&nbsp  assert a + b == [a[0]] + (a[1..] + b);<br>
 											&nbsp&nbsp&nbsp&nbsp }<br>
 								 }<br>
+								 <h3>Paths in a directed graph</h3>
+								 这里我们证明有向图的路径。有向图由一定数量的结点组成，结点之间由边联系，结点定义为：<br>
+								 class Node<br>
+								{<br>
+								// a single field giving the nodes linked to<br>
+								var next: seq<Node><br>
+								}<br>
+								我们用一组非空节点来表示一个图，这些非空节点只指向图中的其他节点，而不指向它自己。我们称这样一组节点为封闭的:<br>
+								predicate closed(graph: set<Node>)<br>
+									reads graph<br>
+								 {<br>
+									null !in graph && // graphs can only consist of actual nodes, not null.<br>
+									forall i :: i in graph ==><br>
+									   forall k :: 0 <= k < |i.next| ==> i.next[k] in graph && i.next[k] != i<br>
+								 }<br>
+								 我们将路径表示为一个非空节点序列，其中每个节点都由路径中的前一个节点链接。我们定义了两个谓词，一个定义有效路径，另一个确定给定的路径是否为图中两个特定节点之间的有效路径:<br>
+								 predicate pathSpecific(p: seq<Node>, start: Node, end: Node, graph: set<Node>)<br>
+									requires closed(graph)<br>
+									reads graph<br>
+								 {<br>
+									0 < |p| && // path is nonempty<br>
+									start == p[0] && end == p[|p|-1] && // it starts and ends correctly<br>
+									path(p, graph) // and it is a valid path<br>
+								 }<br>
+								 predicate path(p: seq<Node>, graph: set<Node>)<br>
+									requires closed(graph) && 0 < |p|<br>
+									reads graph<br>
+								 {<br>
+									p[0] in graph &&<br>
+									(|p| > 1 ==> p[1] in p[0].next && // the first link is valid, if it exists<br>
+									   path(p[1..], graph)) // and the rest of the sequence is a valid<br>
+								 }<br>
+								 现在我们准备陈述我们要证明的引理。我们考虑图和子图:也构成图的图的节点的子集。这个子图必须是封闭的，即不包含它自身之外的链接。如果出现这种情况，那么从子图中的节点到子图外的节点就不存在有效路径。我们将这个事实称为闭引理，我们在Dafny中陈述如下:<br>
+								 
 							</secition>
 					</div>
 			</div>
