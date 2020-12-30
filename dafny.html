@@ -501,7 +501,44 @@
 								<span class="image fit"><img src="images/dafny7.png" alt="" /></span><br>
 								old（e）用来进入method时e的值<br>
 								<span class="image fit"><img src="images/dafny8.png" alt="" /></span><br>
-
+								Modifies允许方法修改heap-allocated数组<br>
+								在postcondition和loop invariant中出现的old用来保证数组其余部分不变<br>
+								所有method或者lemma隐含一个forall语句。它的参数是全称量化的约束下关系建立的前提条件，后置条件需要满足所有。<br>
+								存在量词通过取反转换到全称量词<br>
+								<span class="image fit"><img src="images/dafny9.png" alt="" /></span><br>
+								<h3>Calculations</h3>
+								计算两个数组的点乘<br>
+								<span class="image fit"><img src="images/dafny10.png" alt="" /></span><br>
+								Cal:用来构造两个表达式之间递进的转换关系<br>
+								<span class="image fit"><img src="images/dafny11.png" alt="" /></span><br>
+								<h3>归谬法/反证法</h3>
+								<span class="image fit"><img src="images/dafny12.png" alt="" /></span><br>
+								<h3>Incremental program and proof building</h3>
+								Dafny允许用户构造证明和程序，留下留待以后填充的空白
+								<span class="image fit"><img src="images/dafny13.png" alt="" /></span><br>
+								<h3>Matching triggers</h3>
+								SMT solver  trigger example，remains inconveniences (matching loop forever or based on lower level functions)<br>
+								<span class="image fit"><img src="images/dafny14.png" alt="" /></span><br>
+								<span class="image fit"><img src="images/dafny15.png" alt="" /></span><br>
+								Dafny抱怨1和2可能执行matching loops, 因为触发器{v[i]}同时匹配v[i]和v[i+1]<br>
+								<span class="image fit"><img src="images/dafny16.png" alt="" /></span><br>
+								<h3>Automated induction</h3>
+								Dafny get struck evermore or comes to hang the computer<br>
+								《Automating Induction with an SMT Solver》<br>
+								Automated induction可以组织{:induction false}，用来制定特定的变量来归纳<br>
+								<h3>Euclidean algorithm</h3>
+								𝑥 > 𝑦 ∧ gcd(𝑋, 𝑌 ) = gcd(𝑥, 𝑦) 不变式
+								<span class="image fit"><img src="images/d1.png" alt="" /></span><br>
+								Gcd定义：
+								𝑚 = gcd(𝑥, 𝑦) ⟺ 𝑚 ∣ 𝑥 ∧ 𝑚 ∣ 𝑦 ∧ ( ∀𝑧 ∈ ℤ 𝑧 ∣ 𝑥 ∧ 𝑧 ∣ 𝑦 ⟹ 𝑧 ∣ 𝑚 )<br>
+								<span class="image fit"><img src="images/d2.png" alt="" /></span><br>
+								gcd(𝑦, 𝑥 mod 𝑦) = gcd(𝑥, 𝑦) if 𝑥 > 𝑦<br>
+								∀𝑑 𝑑 > 0 ∧ 𝑑 ∣ 𝑦 ⇒ 𝑥 mod 𝑑 = (𝑥 mod 𝑦) mod 𝑑<br>
+								𝑥 = 𝑥 div 𝑦 ⋅ 𝑦 + 𝑥 mod 𝑦<br>
+								𝑥 mod 𝑑 = (𝑥 div 𝑦 ⋅ 𝑦 + 𝑥 mod 𝑦) mod 𝑑 = ((𝑥 div 𝑦 ⋅ 𝑦) mod 𝑑 + 𝑥 mod 𝑦) mod 𝑑 = (𝑥 mod 𝑦) mod 𝑑<br>
+								(1) 𝑚 ∈ ℕ, 𝑘 ∈ ℕ, 𝑚 ≠ 0 ⟹ (𝑘𝑚) div 𝑚 = 𝑘 ∧ (𝑘𝑚) mod 𝑚 = 0<br>
+								(2) 𝑛 ∈ ℤ, 𝑚 ∈ ℕ, 𝑘 ∈ ℤ, 𝑚 ≠ 0 ⟹ (𝑛 + 𝑘𝑚) mod 𝑚 = 𝑛 mod 𝑚<br>
+								<span class="image fit"><img src="images/d3.png" alt="" /></span><br>
 
 							</secition>
 					</div>
