@@ -67,16 +67,24 @@
                                     Linear distance表示为d(p1,p2)= sup inf td(o1,o2)<br>
                                     线性距离不满足第二条度量属性<br>
                                     通过relaxing trace inclusion 引入近似满足概念：如果Tr(M)和P的线性距离在a上有界，那么MTS M近似满足MLT属性P<br>
+                                    <span class="image fit"><img src="images/mts1.png" alt="" /></span><br>
+
                                     <h4>Approximate Safety Properties</h4>
                                     在定量验证中，属性是安全或者非安全的。<br>
-                                    a-	safety属性P表示所有路径与P有一定距离包含一个坏前缀。<br>
-                                    0-	safety 属性P是传统的安全属性<br>
+                                    a-safety属性P表示所有路径与P有一定距离包含一个坏前缀。<br>
+                                    <span class="image fit"><img src="images/mts2.png" alt="" /></span><br>
+
+                                    0-safety 属性P是传统的安全属性<br>
                                     一个MTS M近似满足一个a-saferty 属性P ：Trf(M)不包含任何P的坏前缀<br>
+                                    <span class="image fit"><img src="images/mts3.png" alt="" /></span><br>
+
                                     <h4>Clousre Operator</h4>
                                     经典安全属性可以定义在LT属性的闭包上。<br>
                                     当两个迁移系统M1和M2，所有M1的路径在M2中，路径包含成立。<br>
                                     Trace inclusion 提升到测量两个迁移系统的距离有多近<br>
                                     属性的闭包操作：<br>
+                                    <span class="image fit"><img src="images/mts4.png" alt="" /></span><br>
+
                                     <h4>MTSs on PSEUDO-ULTRAMETRIC SPACES</h4>
                                     经典属性：闭包的闭包等于闭包，经典满足关系是传递的。但是在pseudometric 空间是不成立的<br>
                                     Pseudometric 和pseudo-ultrametric的不同？solved<br>
@@ -87,6 +95,28 @@
                                     提供了算法来检测是否一个MTS满足a-safety 属性类->regular a-safety properties
                                     关键将regular a-safety 属性的验证规约到通过使用自动计理论的经典不变式属性
                                     非确定有限自动机用来检测正则安全属性的合法性，regular 安全属性的主要描述是所有的坏前缀构成regular 语言。这里扩展了NFAs，用来描述MTSs上的有限路径集。
+                                    <span class="image fit"><img src="images/mts5.png" alt="" /></span><br>
+                                    Word w = w0w1…wn <br>
+                                    接受的run:q0q1..qn+1<br>
+                                    Wi是实际接受的字，vi是迁移条件<br>
+                                    
+                                    给定一个a-safety属性P，如果Bpref(P)能够被MFA接受，那么p是一个正则a-safety属性。<br>
+                                    如果从接受状态到本身的迁移移除，那么自动接接受BPref(P)。<br>
+                                    <span class="image fit"><img src="images/mts6.png" alt="" /></span><br>
+                                    P是不变性属性 当P的所有状态都满足命题逻辑公式φ。<br>
+                                    <span class="image fit"><img src="images/mts7.png" alt="" /></span><br>
+                                    Inv(φ)表示经典不变式属性。<br>
+                                    <span class="image fit"><img src="images/mts8.png" alt="" /></span><br>
+                                    算法的2-4 指明 自动计的状态空间S * Q
+                                    6-10 指明迁移关系->和初始状态I。
+                                    自动机记录所有M上有限路径的运行
+                                    Line 5状态(s,q)上的标记{q}表示有限路径上的当前状态。
+                                    算法用来验证MFA识别的所有最小坏前缀，并给出时间复杂度
+                                    <h4>An illustrative example </h4>
+                                    通过一个机器人能量消耗的例子展示论文的方法。<br>
+Linear distances 用来生成路径inclusion 和equivalence <br>
+Branching distance 用来生成 simulation <br>
+
 
 							</section>
 
